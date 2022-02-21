@@ -1,5 +1,4 @@
-
-def arithmetic_arranger(l: list):
+def arithmetic_arranger(l: list, show: bool):
     if l.__len__() > 5: return "Error: Too many problems."
 
     solutions = []
@@ -28,6 +27,9 @@ def arithmetic_arranger(l: list):
 
     solutions = ["    ".join([ele[i] for ele in solutions] )for i in range(4) ]
     solutions = "\n".join(solutions)
+
+    if show: print(solutions)
+
     return solutions
 
         
