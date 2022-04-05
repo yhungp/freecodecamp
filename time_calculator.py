@@ -19,6 +19,7 @@ def add_time(start: str, add: str, day=None):
     m = result - d * 24 * 60 - h * 60
 
     out = "Returns: "
+    out = ""
     ampm = "AM"
     next_daty = False
     hour = h
@@ -33,6 +34,8 @@ def add_time(start: str, add: str, day=None):
     if hour > 12:
         hour -= 12
         ampm = "PM"
+    elif hour == 12:
+        ampm = "PM"
     
     if ampm == "AM" and hour == 0: hour = 12
     
@@ -43,10 +46,10 @@ def add_time(start: str, add: str, day=None):
             out += " (next day)"
         elif start[1] == "PM" and ampm == "AM":
             out += " (next day)"
-
+    elif d_pass == 1 and add == 1440:
+        out = "{0}:{1} {2}{3} (next day)".format(hour, "0" * (2 - len(str(m))) + str(m), ampm, week_day)
     elif d_pass == 1:
         out = "{0}:{1} {2}{3} ({4} days later)".format(hour, "0" * (2 - len(str(m))) + str(m), ampm, week_day, 2)
-
     else:
         out = "{0}:{1} {2}{3} ({4} days later)".format(hour, "0" * (2 - len(str(m))) + str(m), ampm, week_day, d)
 
